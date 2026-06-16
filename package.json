@@ -10,7 +10,7 @@
     "build": "electron-vite build",
     "start": "electron-vite preview",
     "postinstall": "electron-builder install-app-deps",
-    "rebuild": "electron-rebuild -f -w better-sqlite3",
+    "rebuild": "electron-builder install-app-deps",
     "pack:win": "electron-vite build && electron-builder --win --x64",
     "pack:dir": "electron-vite build && electron-builder --dir"
   },

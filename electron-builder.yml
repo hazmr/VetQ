@@ -13,9 +13,13 @@ win:
     - target: nsis
       arch:
         - x64
+  artifactName: ${productName}-Setup-${version}.${ext}
 nsis:
   oneClick: false
   perMachine: false
   allowToChangeInstallationDirectory: true
   createDesktopShortcut: true
+  createStartMenuShortcut: true
+  runAfterFinish: true
   shortcutName: VetQ
+  uninstallDisplayName: VetQ ${version}

@@ -1,0 +1,49 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install *)",
+      "Bash(python3 -c \"import distutils\")",
+      "Bash(python3 -c \"import setuptools; print\\('setuptools', setuptools.__version__\\)\")",
+      "Bash(gcc --version)",
+      "Bash(python3 -m pip --version)",
+      "Bash(python3 -m venv --help)",
+      "Bash(node-gyp --version)",
+      "Bash(npm root *)",
+      "Bash(npm config *)",
+      "Bash(echo \"set to: $\\(npm config get node_gyp\\)\")",
+      "Bash(ls -la \"$\\(npm root -g\\)/node-gyp/bin/node-gyp.js\")",
+      "Bash(python3 -m venv .gypenv)",
+      "Bash(.gypenv/bin/python -m pip install --upgrade pip \"setuptools<81\")",
+      "Bash(.gypenv/bin/python -c \"import distutils.version; print\\('distutils OK', distutils.__file__\\)\")",
+      "Bash(npm run *)",
+      "Bash(npx tsc *)",
+      "Bash(echo \"web exit: $?\")",
+      "Bash(echo \"node exit: $?\")",
+      "Bash(node node_modules/electron/install.js)",
+      "Bash(echo \"exit: $?\")",
+      "Bash(env)",
+      "Bash(DEBUG=* node node_modules/electron/install.js)",
+      "Bash(echo \"=== dist contents ===\"; ls -la node_modules/electron/dist/ 2>&1 | head -20; echo \"=== cache zip ===\"; ls -la /home/hazem/.cache/electron/*/*.zip 2>&1 | head; echo \"=== install.js tail ===\"; tail -30 node_modules/electron/install.js)",
+      "Read(//home/hazem/.cache/electron/**)",
+      "Bash(cat /tmp/medvet.log; echo \"=== procs ===\"; pgrep -af \"dist/electron\" | head -3)",
+      "Read(//tmp/**)",
+      "Bash(xxd node_modules/electron/path.txt)",
+      "Bash(env -u ELECTRON_RUN_AS_NODE ./node_modules/electron/dist/electron --version)",
+      "Bash(chmod +x /tmp/launch-medvet.sh)",
+      "Bash(pkill -f \"dist/electron\")",
+      "Bash(nohup /tmp/launch-medvet.sh)",
+      "Bash(timeout 6 env -u ELECTRON_RUN_AS_NODE DISPLAY=:0 ./node_modules/electron/dist/electron . --no-sandbox)",
+      "Bash(echo \"EXIT=$?\")",
+      "Bash(cd /home/hazem/Projects/medvet; pkill -f \"dist/electron\" 2>/dev/null; sleep 1; timeout 6 env -u ELECTRON_RUN_AS_NODE DISPLAY=:0 ./node_modules/electron/dist/electron . --no-sandbox --disable-gpu > /tmp/m.log 2>&1; echo \"EXIT=$?\"; echo \"=== LOG ===\"; cat /tmp/m.log)",
+      "Bash(grim /tmp/shot1.png)",
+      "Bash(command -v hyprctl)",
+      "Bash(hyprctl clients *)",
+      "Bash(hyprctl dispatch *)",
+      "Bash(grim /tmp/shot2.png)",
+      "Bash(hyprctl activeworkspace *)"
+    ],
+    "additionalDirectories": [
+      "/tmp"
+    ]
+  }
+}

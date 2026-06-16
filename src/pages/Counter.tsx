@@ -12,6 +12,7 @@ export function Counter({ isAdmin }: { isAdmin: boolean }) {
   const [error, setError] = useState('')
   const [notice, setNotice] = useState('')
   const [busy, setBusy] = useState(false)
+  const [newDayConfirm, setNewDayConfirm] = useState<string | null>(null)
 
   const baseName = (p: string) => p.split(/[\\/]/).pop() ?? p
 
@@ -49,7 +50,17 @@ export function Counter({ isAdmin }: { isAdmin: boolean }) {
   const startNewDay = async () => {
     setError('')
     const check = await call(api.session.checkNewDay())
-    if (check.needsConfirm && !window.confirm(check.message || t('counter.confirmNewDay'))) return
+    if (check.needsConfirm) {
+      setNewDayConfirm(check.message || t('counter.confirmNewDay'))
+      return
+    }
+    await call(api.session.startNewDay())
+    await refresh()
+  }
+
+  const confirmNewDay = async () => {
+    setNewDayConfirm(null)
+    setError('')
     await call(api.session.startNewDay())
     await refresh()
   }
@@ -84,6 +95,13 @@ export function Counter({ isAdmin }: { isAdmin: boolean }) {
 
       {error && <div className="error-banner" style={{ marginBottom: 14 }}>{error}</div>}
       {notice && <div className="badge" style={{ marginBottom: 14 }}>{notice}</div>}
+      {newDayConfirm && (
+        <div className="error-banner" style={{ marginBottom: 14, display: 'flex', alignItems: 'center', gap: 12 }}>
+          <span style={{ flex: 1 }}>{newDayConfirm}</span>
+          <button className="btn sm" onClick={() => void confirmNewDay()}>{t('common.confirm')}</button>
+          <button className="btn ghost sm" onClick={() => setNewDayConfirm(null)}>{t('common.cancel')}</button>
+        </div>
+      )}
 
       <div className="counter-layout">
         <div className="btn-grid">

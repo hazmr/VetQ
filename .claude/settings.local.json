@@ -40,10 +40,22 @@
       "Bash(hyprctl clients *)",
       "Bash(hyprctl dispatch *)",
       "Bash(grim /tmp/shot2.png)",
-      "Bash(hyprctl activeworkspace *)"
+      "Bash(hyprctl activeworkspace *)",
+      "Skill(run)",
+      "Skill(run:*)",
+      "PowerShell(Set-Location \"e:\\\\VetQ\"; $env:CSC_IDENTITY_AUTO_DISCOVERY = \"false\"; $env:WIN_CSC_LINK = \"\"; npm run pack:win 2>&1)",
+      "PowerShell(Stop-Process -Name \"VetQ\" -Force -ErrorAction SilentlyContinue; Start-Sleep -Milliseconds 500; cmd /c \"rd /s /q E:\\\\VetQ\\\\release\"; Write-Host \"Done: $LASTEXITCODE\")",
+      "Read(//c/Users/hazem/AppData/Local/electron-builder/Cache/winCodeSign/**)",
+      "PowerShell(head -30)",
+      "Read(//c/Users/hazem/AppData/Local/electron-builder/Cache/**)",
+      "PowerShell($src = \"C:\\\\Users\\\\hazem\\\\AppData\\\\Local\\\\electron-builder\\\\Cache\\\\winCodeSign\\\\887560739\"; $dst = \"C:\\\\Users\\\\hazem\\\\AppData\\\\Local\\\\electron-builder\\\\Cache\\\\winCodeSign\\\\winCodeSign-2.6.0\"; if \\(Test-Path $dst\\) { Remove-Item -Recurse -Force $dst }; Copy-Item -Recurse $src $dst; Write-Host \"Done: $\\(Get-ChildItem $dst | Measure-Object | Select-Object -ExpandProperty Count\\) items\")",
+      "PowerShell(Get-ChildItem \"e:\\\\VetQ\\\\release\" -Recurse | Where-Object { !$_.PSIsContainer } | Select-Object Name, @{N='Size';E={[math]::Round\\($_.Length/1MB, 1\\)}} | Format-Table -AutoSize)",
+      "PowerShell(Remove-Item -Recurse -Force \"e:\\\\VetQ\\\\release\" -ErrorAction SilentlyContinue; Set-Location \"e:\\\\VetQ\"; $env:CSC_IDENTITY_AUTO_DISCOVERY = \"false\"; $env:WIN_CSC_LINK = \"\"; npm run pack:win 2>&1)",
+      "PowerShell(Get-Item \"e:\\\\VetQ\\\\release\\\\VetQ-Setup-1.0.0.exe\" | Select-Object Name, @{N='Size MB';E={[math]::Round\\($_.Length/1MB,1\\)}}, LastWriteTime)"
     ],
     "additionalDirectories": [
-      "/tmp"
+      "/tmp",
+      "e:\\VetQ\\node_modules"
     ]
   }
 }

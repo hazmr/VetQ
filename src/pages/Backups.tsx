@@ -44,16 +44,16 @@ export function Backups({ onRestored }: { onRestored: () => void }) {
   const restore = async () => {
     const ok = await call(api.backup.restore())
     if (ok) {
-      window.alert(t('backups.restoredAlert'))
-      onRestored()
+      flash(t('backups.restoredAlert'))
+      setTimeout(() => onRestored(), 1500)
     }
   }
 
   const restoreFile = async (path: string) => {
     const ok = await call(api.backup.restoreFile(path))
     if (ok) {
-      window.alert(t('backups.restoredAlert'))
-      onRestored()
+      flash(t('backups.restoredAlert'))
+      setTimeout(() => onRestored(), 1500)
     }
   }
 

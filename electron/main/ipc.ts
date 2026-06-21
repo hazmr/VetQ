@@ -70,6 +70,8 @@ export function registerIpc(): void {
     currentUser = null
     return true
   }))
+  // Public: names shown in the login picker so the client doesn't have to type a username.
+  ipcMain.handle('auth:loginUsers', () => wrap(() => auth.listLoginUsers()))
 
   // ---- users (admin) ----
   ipcMain.handle('users:list', () => wrap(() => (requireAdmin(), auth.listUsers())))

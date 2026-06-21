@@ -63,6 +63,13 @@ export function getUserById(id: number): User | undefined {
   return row ? rowToUser(row) : undefined
 }
 
+/** Minimal list of active users for the login picker (no secrets). */
+export function listLoginUsers(): { username: string; display_name: string }[] {
+  return getDb()
+    .prepare("SELECT username, display_name FROM users WHERE active = 1 ORDER BY role = 'admin' DESC, display_name")
+    .all() as { username: string; display_name: string }[]
+}
+
 export function listUsers(): User[] {
   const rows = getDb()
     .prepare("SELECT * FROM users ORDER BY role = 'admin' DESC, username")

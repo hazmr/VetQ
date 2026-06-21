@@ -1,6 +1,6 @@
 {
   "name": "vetq",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "VetQ — نظام عيادة بيطرية محلي / Local veterinary clinic system",
   "main": "out/main/index.js",
   "author": "VetQ",

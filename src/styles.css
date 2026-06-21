@@ -382,7 +382,7 @@ table.tbl tr:last-child td {
 }
 .auth-card {
   width: 100%;
-  max-width: 400px;
+  max-width: 440px;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -400,6 +400,77 @@ table.tbl tr:last-child td {
   text-align: center;
   color: var(--text-dim);
   margin-top: -8px;
+}
+
+/* login user picker (avatar + name cards) */
+.login-users {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  max-height: 264px;
+  overflow-y: auto;
+  padding: 2px;
+}
+.login-user {
+  width: 116px;
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+  padding: 14px 8px;
+  background: var(--surface-2);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  cursor: pointer;
+  transition: 0.15s;
+}
+.login-user:hover {
+  border-color: var(--accent);
+}
+.login-user.selected {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--accent-text);
+}
+.login-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 21px;
+  font-weight: 800;
+  background: var(--accent);
+  color: var(--accent-text);
+}
+.login-user.selected .login-avatar {
+  background: var(--accent-text);
+  color: var(--accent);
+}
+.login-user-name {
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.2;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.btn-lg {
+  padding: 14px 20px;
+  font-size: 16px;
+}
+.auth-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 4px;
 }
 
 .error-banner {

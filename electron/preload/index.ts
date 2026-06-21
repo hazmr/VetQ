@@ -23,6 +23,7 @@ const invoke = <T>(channel: string, ...args: unknown[]): Promise<ApiResult<T>> =
 const api = {
   auth: {
     state: () => invoke<{ firstRun: boolean; user: User | null }>('auth:state'),
+    loginUsers: () => invoke<{ username: string; display_name: string }[]>('auth:loginUsers'),
     setup: (p: { username: string; password: string }) => invoke<User>('auth:setup', p),
     login: (p: { username: string; password: string }) => invoke<User>('auth:login', p),
     logout: () => invoke<boolean>('auth:logout')

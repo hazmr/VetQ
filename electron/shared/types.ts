@@ -100,6 +100,8 @@ export interface Settings {
   clinic_name: string
   currency: string
   printer_name: string
+  /** Ticket paper width in mm: '80' | '58' | a custom number as string. */
+  paper_size: string
   auto_print: boolean
   backup_dir: string
   auto_backup: boolean

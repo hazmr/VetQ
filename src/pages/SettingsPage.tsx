@@ -63,6 +63,8 @@ export function SettingsPage({ onChange }: { onChange: (s: Settings) => void }) 
 
   if (!settings) return null
 
+  const paperMode = settings.paper_size === '80' || settings.paper_size === '58' ? settings.paper_size : 'custom'
+
   return (
     <>
       <h1 className="page-title">{tr('nav.settings')}</h1>
@@ -172,7 +174,7 @@ export function SettingsPage({ onChange }: { onChange: (s: Settings) => void }) 
             <label className="field" style={{ flex: 2 }}>
               {tr('settings.printer')}
               <select
-                defaultValue={settings.printer_name}
+                value={settings.printer_name}
                 onChange={(e) => saveSettings({ printer_name: e.target.value })}
               >
                 <option value="">{tr('settings.defaultPrinter')}</option>
@@ -191,6 +193,37 @@ export function SettingsPage({ onChange }: { onChange: (s: Settings) => void }) 
                 onChange={(e) => saveSettings({ auto_print: e.target.checked })}
               />
             </label>
+          </div>
+
+          <div className="row" style={{ alignItems: 'flex-end', marginTop: 16 }}>
+            {/* Paper size */}
+            <label className="field" style={{ flex: 1 }}>
+              {tr('settings.paperSize')}
+              <select
+                value={paperMode}
+                onChange={(e) =>
+                  saveSettings({ paper_size: e.target.value === 'custom' ? '72' : e.target.value })
+                }
+              >
+                <option value="80">{tr('settings.paper80')}</option>
+                <option value="58">{tr('settings.paper58')}</option>
+                <option value="custom">{tr('settings.paperCustom')}</option>
+              </select>
+            </label>
+            {paperMode === 'custom' && (
+              <label className="field" style={{ width: 130 }}>
+                {tr('settings.paperWidthMm')}
+                <input
+                  type="number"
+                  min={20}
+                  max={120}
+                  defaultValue={settings.paper_size}
+                  onBlur={(e) =>
+                    e.target.value && e.target.value !== settings.paper_size && saveSettings({ paper_size: e.target.value })
+                  }
+                />
+              </label>
+            )}
           </div>
         </div>
 

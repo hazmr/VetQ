@@ -13,6 +13,7 @@ export function getAllSettings(): Settings {
     clinic_name: map.get('clinic_name') ?? '',
     currency: map.get('currency') ?? 'ج.م',
     printer_name: map.get('printer_name') ?? '',
+    paper_size: map.get('paper_size') ?? '80',
     auto_print: map.get('auto_print') === '1',
     backup_dir: map.get('backup_dir') ?? '',
     auto_backup: map.get('auto_backup') === '1',
